@@ -8,4 +8,16 @@ class AppError {
 	}
 }
 
-export { AppError }
+class NotFoundError extends AppError {
+	constructor(message: string) {
+		super(404, message)
+	}
+}
+
+class UnauthorizedError extends AppError {
+	constructor(message: string) {
+		super(401, message)
+	}
+}
+
+export { AppError, NotFoundError, UnauthorizedError }
