@@ -1,3 +1,4 @@
 import adminSignInSchema from "./adminSignInSchema"
+import authHeaderSchema from "./authHeaderSchema"
 
-export { adminSignInSchema }
+export { adminSignInSchema, authHeaderSchema }
