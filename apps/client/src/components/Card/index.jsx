@@ -3,7 +3,7 @@ import * as S from "./styles"
 const Card = ({ name, brand, model, mainImageUrl, value }) => {
 	return (
 		<S.Container>
-			<img src={mainImageUrl} loading="lazy" />
+			<img src={mainImageUrl} />
 			<S.Description>
 				<span>
 					<S.Title>{name}</S.Title>

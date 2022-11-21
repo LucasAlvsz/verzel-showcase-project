@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react"
+import { toast } from "react-toastify"
 
 import carApi from "../../services/carApi"
 
@@ -7,18 +8,23 @@ import Header from "../../components/Header"
 import SearchBar from "../../components/SearchBar"
 
 import * as S from "./styles"
+import Loading from "../../components/Loading"
 
 const Home = () => {
 	const [isLoading, setIsLoading] = useState(false)
 	const [carsData, setCarsData] = useState([])
 	const [sortBy, setSortBy] = useState("lowest")
+
 	useEffect(() => {
+		setIsLoading(true)
 		carApi
 			.getCars()
 			.then(({ data }) => setCarsData(handleSort(data, sortBy)))
 			.catch(err => {
 				console.log(err)
+				toast.error("Erro ao buscar carros, tente novamente mais tarde")
 			})
+			.finally(() => setIsLoading(false))
 	}, [])
 
 	const handleSort = (data, sortBy) => {
@@ -54,16 +60,22 @@ const Home = () => {
 				</S.FilterContainer>
 			</S.SearchContainer>
 			<S.ShowcaseContainer>
-				{carsData?.map(
-					({ id, name, model, mainImageURL, value, brand: { name: brandName } }) => (
-						<Card
-							key={id}
-							name={name}
-							model={model}
-							mainImageUrl={mainImageURL}
-							value={value}
-							brand={brandName}
-						/>
+				{isLoading ? (
+					<S.LoadingContainer>
+						<Loading />
+					</S.LoadingContainer>
+				) : (
+					carsData?.map(
+						({ id, name, model, mainImageURL, value, brand: { name: brandName } }) => (
+							<Card
+								key={id}
+								name={name}
+								model={model}
+								mainImageUrl={mainImageURL}
+								value={value}
+								brand={brandName}
+							/>
+						)
 					)
 				)}
 			</S.ShowcaseContainer>

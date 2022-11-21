@@ -24,10 +24,10 @@ export const SearchContainer = styled.div`
 export const SearchBarContainer = styled.div`
 	width: 100%;
 	height: 100px;
-	padding: 0 15px;
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	padding: 0 15px;
 	background-color: ${({ theme }) => theme.colors.primaryBlue};
 `
 
@@ -75,15 +75,25 @@ export const OrderBy = styled.div`
 `
 
 export const ShowcaseContainer = styled.div`
-	/* width: 100%; */
+	width: 100%;
 	height: 100%;
 	display: grid;
-	grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+	grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
 	grid-gap: 20px;
 	padding: 0 15px;
 	background-color: #fff;
 	margin-bottom: 30px;
 	@media (min-width: ${({ theme }) => theme.breakpoints.tablet}) {
 		border-radius: 0;
+	}
+`
+
+export const LoadingContainer = styled.div`
+	width: 100px;
+	position: absolute;
+	left: 45%;
+	img {
+		width: 100%;
+		height: 100%;
 	}
 `
