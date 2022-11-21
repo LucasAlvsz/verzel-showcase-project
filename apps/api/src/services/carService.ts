@@ -26,7 +26,7 @@ const deleteCar = async (id: number) => {
 
 const validadeId = async (id: number, model: Prisma.ModelName) => {
 	const car = await queryFactory.getById(id, "Car")
-	if (!car) throw new NotFoundError("Car not found")
+	if (!car) throw new NotFoundError(`${model} not found`)
 }
 
 export default { getCars, createCar, updateCar, deleteCar }
