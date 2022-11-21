@@ -1,7 +1,13 @@
 import Joi from "joi"
-import { CarData } from "@/types/carTypes"
+import { CarBody } from "@/types/carTypes"
 
-const bodySchema = Joi.object<CarData>({
+const paramsSchema = Joi.object({
+	id: Joi.number().required(),
+})
+	.required()
+	.options({ allowUnknown: false })
+
+const bodySchema = Joi.object<CarBody>({
 	name: Joi.string().required(),
 	model: Joi.string().required(),
 	mainImageURL: Joi.string().required(),
@@ -11,8 +17,10 @@ const bodySchema = Joi.object<CarData>({
 	.required()
 	.options({ allowUnknown: false })
 
-const createOrUpdateCarSchema = Joi.object({
+const carSchema = Joi.object({
 	body: bodySchema,
 }).options({ allowUnknown: true })
 
-export default createOrUpdateCarSchema
+export { bodySchema, paramsSchema }
+
+export default carSchema

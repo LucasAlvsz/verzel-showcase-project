@@ -1,5 +1,7 @@
 import { Car } from "@prisma/client"
 
-type CarData = Omit<Car, "id" | "createdAt" | "updatedAt" | "deletedAt">
+type CarData = Omit<Car, "createdAt" | "updatedAt">
 
-export { CarData }
+type CarBody = Omit<CarData, "id">
+
+export { CarBody, CarData }

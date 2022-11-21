@@ -11,37 +11,34 @@ datasource db {
 }
 
 model AdminUser {
-  id        Int       @id @default(autoincrement())
-  email     String    @unique
+  id        Int      @id @default(autoincrement())
+  email     String   @unique
   password  String
-  createdAt DateTime  @default(now())
-  updatedAt DateTime  @updatedAt
-  deletedAt DateTime?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 
   @@map("admin_users")
 }
 
 model Car {
-  id           Int       @id @default(autoincrement())
+  id           Int      @id @default(autoincrement())
   name         String
-  brand        Brand     @relation(fields: [brandId], references: [id])
+  brand        Brand    @relation(fields: [brandId], references: [id])
   model        String
   mainImageURL String
-  value        String
-  createdAt    DateTime  @default(now())
-  updatedAt    DateTime  @updatedAt
-  deletedAt    DateTime?
+  value        Decimal
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
   brandId      Int
 
   @@map("cars")
 }
 
 model Brand {
-  id        Int       @id @default(autoincrement())
-  name      String
-  createdAt DateTime  @default(now())
-  updatedAt DateTime  @updatedAt
-  deletedAt DateTime?
+  id        Int      @id @default(autoincrement())
+  name      String   @unique
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
   Car       Car[]
 
   @@map("brands")

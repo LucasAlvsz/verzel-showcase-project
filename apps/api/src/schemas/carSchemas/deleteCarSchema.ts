@@ -1,10 +1,5 @@
 import Joi from "joi"
-
-const paramsSchema = Joi.object({
-	id: Joi.number().required(),
-})
-	.required()
-	.options({ allowUnknown: false })
+import { paramsSchema } from "@/schemas/carSchemas"
 
 const deleteCarSchema = Joi.object({
 	params: paramsSchema,
