@@ -13,7 +13,8 @@ export const Container = styled.div`
 	}
 	img {
 		width: 100%;
-		object-fit: fill;
+		height: 200px;
+		object-fit: cover;
 		border-radius: 5px 5px 0 0;
 	}
 `

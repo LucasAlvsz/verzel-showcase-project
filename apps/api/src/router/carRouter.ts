@@ -6,8 +6,8 @@ import { createCar, deleteCar, getCars, updateCar } from "@/controllers/carContr
 const carRouter = Router()
 
 carRouter
-	.use(validateBearerToken)
 	.get("/", getCars)
+	.use(validateBearerToken)
 	.post("/", validateSchema(carSchema), createCar)
 	.put("/:id", validateSchema(putCarSchema), updateCar)
 	.delete("/:id", validateSchema(deleteCarSchema), deleteCar)
