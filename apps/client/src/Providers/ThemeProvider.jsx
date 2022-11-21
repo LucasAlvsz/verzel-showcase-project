@@ -6,7 +6,12 @@ const Theme = ({ children }) => {
 		tablet: "768px",
 		desktop: "1024px",
 	}
-	return <ThemeProvider theme={{ breakpoints }}>{children}</ThemeProvider>
+
+	const colors = {
+		primaryBlue: "#3374db",
+	}
+
+	return <ThemeProvider theme={{ breakpoints, colors }}>{children}</ThemeProvider>
 }
 
 export default Theme

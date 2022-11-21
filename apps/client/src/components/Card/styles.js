@@ -16,10 +16,6 @@ export const Container = styled.div`
 		object-fit: fill;
 		border-radius: 5px 5px 0 0;
 	}
-
-	@media (min-width: ${({ theme }) => theme.breakpoints.mobile}) {
-		min-width: 205px;
-	}
 `
 
 export const Title = styled.h3`

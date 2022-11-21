@@ -7,9 +7,24 @@ const Home = () => {
 	return (
 		<S.Main>
 			<Header />
-			<S.SearchBarContainer>
-				<SearchBar />
-			</S.SearchBarContainer>
+			<S.SearchContainer>
+				<S.SearchBarContainer>
+					<SearchBar />
+				</S.SearchBarContainer>
+				<S.FilterContainer>
+					<h4>CARROS USADOS</h4>
+					<span>
+						<p>3.718 Resultados</p>
+						<S.OrderBy>
+							Odernar:
+							<select name="" id="">
+								<option value="">Menor preço</option>
+								<option value="">Maior preço</option>
+							</select>
+						</S.OrderBy>
+					</span>
+				</S.FilterContainer>
+			</S.SearchContainer>
 			<S.ShowcaseContainer>
 				<Card
 					name="Fiat Uno"
