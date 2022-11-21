@@ -1,21 +1,28 @@
 import styled from "styled-components"
 
 export const Container = styled.div`
-	margin: 40px auto;
-
-	max-width: 300px;
+	width: 100%;
+	height: auto;
 	display: flex;
 	flex-direction: column;
 	border-radius: 5px;
 	box-shadow: 0px 3px 4px rgba(0, 0, 0, 0.3);
+	cursor: pointer;
+	:hover {
+		box-shadow: 0px 3px 4px rgba(0, 0, 0, 0.5);
+	}
 	img {
 		width: 100%;
 		object-fit: fill;
 		border-radius: 5px 5px 0 0;
 	}
+
+	@media (min-width: ${({ theme }) => theme.breakpoints.mobile}) {
+		min-width: 205px;
+	}
 `
 
-export const Title = styled.h2`
+export const Title = styled.h3`
 	font-size: 16px;
 	font-weight: 700;
 	color: #333;
@@ -34,7 +41,8 @@ export const Price = styled.p`
 
 export const Description = styled.div`
 	width: 100%;
-	padding: 5px 12px;
+	height: auto;
+	padding: 10px;
 	font-weight: 500;
 	span {
 		display: flex;

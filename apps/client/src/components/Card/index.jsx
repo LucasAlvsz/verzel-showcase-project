@@ -6,9 +6,7 @@ const Card = ({ name, brand, model, mainImageUrl, value }) => {
 			<img src={mainImageUrl} />
 			<S.Description>
 				<span>
-					<S.Title>
-						<h3>{name}</h3>
-					</S.Title>
+					<S.Title>{name}</S.Title>
 					<S.Info>
 						{brand} • {model}
 					</S.Info>
