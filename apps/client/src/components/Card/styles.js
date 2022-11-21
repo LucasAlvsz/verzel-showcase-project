@@ -31,7 +31,7 @@ export const Info = styled.p`
 
 export const Price = styled.p`
 	font-size: 20px;
-	color: #3374db;
+	color: ${({ theme }) => theme.colors.primaryBlue};
 	margin-top: 20px;
 `
 

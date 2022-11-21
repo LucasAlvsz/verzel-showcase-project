@@ -4,7 +4,7 @@ export const Main = styled.div`
 	width: 100%;
 	height: auto;
 	margin-top: 60px;
-	background-color: #3374db;
+	background-color: ${({ theme }) => theme.colors.primaryBlue};
 `
 
 export const SearchContainer = styled.div`
