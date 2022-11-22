@@ -1,29 +1,19 @@
-import styled from "styled-components"
+import { useNavigate } from "react-router-dom"
 import verzelLogo from "../../assets/images/verzel-logo-meta.png"
 
+import * as S from "./styles"
+
 const Header = () => {
+	const navigate = useNavigate()
 	return (
-		<StyledHeader>
-			<Logo src={verzelLogo} alt="Verzel Logo" />
-		</StyledHeader>
+		<S.StyledHeader>
+			<S.Logo src={verzelLogo} alt="Verzel Logo" />
+			<S.Option onClick={() => navigate("/cars/register")}>
+				<h3>Cadastrar Veículo</h3>
+				<S.StyledPlusCircle />
+			</S.Option>
+		</S.StyledHeader>
 	)
 }
 
 export default Header
-
-export const StyledHeader = styled.header`
-	width: 100%;
-	height: 60px;
-	position: absolute;
-	top: 0;
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	padding: 16px 20px;
-	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-`
-
-export const Logo = styled.img`
-	width: 90px;
-	height: 50px;
-`
