@@ -28,7 +28,7 @@ const SignIn = () => {
 			.then(({ data }) => {
 				toast.success("Login realizado com sucesso")
 				setToken(data.token)
-				navigate("/cars/register")
+				navigate("/")
 			})
 			.catch(err => {
 				console.log(err)
@@ -72,6 +72,9 @@ const SignIn = () => {
 					</button>
 				</S.Form>
 				<S.Error>{error}</S.Error>
+				<S.StyledLink to="/" disabled={isLoading}>
+					Voltar para a página inicial
+				</S.StyledLink>
 			</S.Container>
 		</S.Main>
 	)

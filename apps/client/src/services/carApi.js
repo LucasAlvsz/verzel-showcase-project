@@ -1,5 +1,6 @@
-import api from "./api"
+import api, { setAuthToken } from "./api"
 
-const getCars = () => api.get("/cars")
+const getCars = async () => api.get("/cars")
+const deleteCar = async (id, token) => api.delete(`/cars/${id}`, setAuthToken(token))
 
-export default { getCars }
+export default { getCars, deleteCar }

@@ -1,4 +1,5 @@
 import styled from "styled-components"
+import { Link } from "react-router-dom"
 import { Eye } from "@styled-icons/heroicons-solid/Eye"
 import { EyeOff } from "@styled-icons/heroicons-solid/EyeOff"
 
@@ -121,4 +122,22 @@ export const Error = styled.span`
 	color: tomato;
 	font-size: 14px;
 	margin-top: 20px;
+`
+
+export const StyledLink = styled(Link)`
+	width: 100%;
+	max-width: 400px;
+	text-align: center;
+	font-size: 14px;
+	color: #333;
+	text-decoration: none;
+	margin-top: 20px;
+	text-decoration: underline;
+	:hover {
+		color: ${props => props.theme.colors.primaryBlue};
+	}
+	:disabled {
+		opacity: 0.5;
+		cursor: not-allowed;
+	}
 `

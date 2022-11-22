@@ -1,5 +1,6 @@
 import styled from "styled-components"
 import { PlusCircle } from "@styled-icons/evaicons-solid/PlusCircle"
+import { AdminPanelSettings } from "@styled-icons/material/AdminPanelSettings"
 
 export const StyledHeader = styled.header`
 	width: 100%;
@@ -24,6 +25,13 @@ export const Logo = styled.img`
 `
 
 export const StyledPlusCircle = styled(PlusCircle)`
+	width: 25px;
+	height: 25px;
+	color: ${({ theme }) => theme.colors.primaryBlue};
+	margin-left: 5px;
+`
+
+export const StyledAdminPanelSettings = styled(AdminPanelSettings)`
 	width: 25px;
 	height: 25px;
 	color: ${({ theme }) => theme.colors.primaryBlue};

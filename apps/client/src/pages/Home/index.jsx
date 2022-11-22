@@ -1,5 +1,5 @@
-import { useEffect, useState } from "react"
 import { toast } from "react-toastify"
+import { useContext, useEffect, useState } from "react"
 
 import carApi from "../../services/carApi"
 
@@ -9,10 +9,11 @@ import SearchBar from "../../components/SearchBar"
 
 import * as S from "./styles"
 import Loading from "../../components/Loading"
+import { CarContext } from "../../providers/CarProvider"
 
 const Home = () => {
 	const [isLoading, setIsLoading] = useState(false)
-	const [carsData, setCarsData] = useState([])
+	const { carsData, setCarsData } = useContext(CarContext)
 	const [sortBy, setSortBy] = useState("lowest")
 
 	useEffect(() => {
@@ -69,6 +70,7 @@ const Home = () => {
 						({ id, name, model, mainImageURL, value, brand: { name: brandName } }) => (
 							<Card
 								key={id}
+								id={id}
 								name={name}
 								model={model}
 								mainImageUrl={mainImageURL}
