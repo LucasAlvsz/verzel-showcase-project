@@ -8,15 +8,20 @@ export const Container = styled.div`
 	flex-direction: column;
 	border-radius: 5px;
 	box-shadow: 0px 3px 4px rgba(0, 0, 0, 0.3);
+	background-color: #fff;
 	cursor: pointer;
 	:hover {
 		box-shadow: 0px 3px 4px rgba(0, 0, 0, 0.5);
 	}
-	img {
+	> img {
 		width: 100%;
-		height: 200px;
+		height: 60%;
 		object-fit: cover;
 		border-radius: 5px 5px 0 0;
+	}
+
+	@media (min-width: ${({ theme }) => theme.breakpoints.mobile}) {
+		max-height: 270px;
 	}
 `
 

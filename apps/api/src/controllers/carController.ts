@@ -27,4 +27,9 @@ const deleteCar = async (req: Request, res: Response) => {
 	res.send(deletedCar)
 }
 
-export { getCars, createCar, updateCar, deleteCar }
+const getBrands = async (req: Request, res: Response) => {
+	const brands = await carService.getBrands()
+	res.send(brands)
+}
+
+export { getCars, createCar, updateCar, deleteCar, getBrands }

@@ -18,6 +18,7 @@ export const SearchContainer = styled.div`
 	@media (min-width: ${({ theme }) => theme.breakpoints.desktop}) {
 		position: sticky;
 		top: 0;
+		z-index: 1;
 	}
 `
 

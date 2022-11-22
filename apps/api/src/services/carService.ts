@@ -29,4 +29,6 @@ const validadeId = async (id: number, model: Prisma.ModelName) => {
 	if (!car) throw new NotFoundError(`${model} not found`)
 }
 
-export default { getCars, createCar, updateCar, deleteCar }
+const getBrands = async () => carRepostitory.getBrands()
+
+export default { getCars, createCar, updateCar, deleteCar, getBrands }

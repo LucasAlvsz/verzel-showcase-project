@@ -2,14 +2,14 @@ import { toast } from "react-toastify"
 import { useContext, useEffect, useState } from "react"
 
 import carApi from "../../services/carApi"
+import { CarContext } from "../../providers/CarProvider"
 
 import Card from "../../components/Card"
 import Header from "../../components/Header"
+import Loading from "../../components/Loading"
 import SearchBar from "../../components/SearchBar"
 
 import * as S from "./styles"
-import Loading from "../../components/Loading"
-import { CarContext } from "../../providers/CarProvider"
 
 const Home = () => {
 	const [isLoading, setIsLoading] = useState(false)

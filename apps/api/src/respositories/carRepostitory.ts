@@ -25,4 +25,6 @@ const updateCar = async (id: number, data: CarData) => prisma.car.update({ where
 
 const deleteCar = async (id: number) => prisma.car.delete({ where: { id } })
 
-export default { getCars, createCar, updateCar, deleteCar }
+const getBrands = async () => prisma.brand.findMany({ select: { id: true, name: true } })
+
+export default { getCars, createCar, updateCar, deleteCar, getBrands }

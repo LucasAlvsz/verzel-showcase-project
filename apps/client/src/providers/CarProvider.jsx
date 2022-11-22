@@ -11,8 +11,12 @@ export const CarProvider = ({ children }) => {
 
 	const handleDelete = async id => carApi.deleteCar(id, token)
 
+	const getBrands = async () => carApi.getBrands(token)
+
+	const createCar = async data => carApi.createCar(data, token)
+
 	return (
-		<CarContext.Provider value={{ carsData, setCarsData, handleDelete }}>
+		<CarContext.Provider value={{ carsData, setCarsData, handleDelete, getBrands, createCar }}>
 			{children}
 		</CarContext.Provider>
 	)

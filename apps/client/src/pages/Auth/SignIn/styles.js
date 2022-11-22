@@ -19,11 +19,11 @@ export const Container = styled.div`
 	display: flex;
 	align-items: center;
 	flex-direction: column;
-	img {
+	> img {
 		width: 200px;
 		margin-bottom: 20px;
 	}
-	p {
+	> p {
 		margin-bottom: 20px;
 		font-size: 13px;
 		color: #999;
@@ -60,7 +60,7 @@ export const Form = styled.form`
 	align-items: center;
 	gap: 10px;
 
-	span {
+	> span {
 		width: 100%;
 		display: flex;
 		align-items: center;
@@ -75,12 +75,12 @@ export const Form = styled.form`
 		border-radius: 5px;
 		font-size: 16px;
 		color: #333;
-		&:focus {
+		:focus {
 			outline: none;
 			border-color: #333;
 			box-shadow: 0 0 0 1px #ccc;
 		}
-		&::placeholder {
+		::placeholder {
 			color: #ccc;
 		}
 		:disabled {
@@ -89,7 +89,7 @@ export const Form = styled.form`
 		}
 	}
 
-	button {
+	> button {
 		width: 80%;
 		height: 50px;
 		border: 0;
@@ -99,15 +99,18 @@ export const Form = styled.form`
 		color: #fff;
 		background-color: #333;
 		cursor: pointer;
-		&:hover {
+		:hover {
 			background-color: #666;
 		}
 
 		:disabled {
 			opacity: 0.5;
 			cursor: wait;
+			:hover {
+				background-color: #333;
+			}
 		}
-		img {
+		> img {
 			width: 50px;
 			height: 50px;
 			margin-left: 10px;
