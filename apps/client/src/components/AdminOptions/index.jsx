@@ -1,15 +1,16 @@
-import { useContext, useState } from "react"
 import { toast } from "react-toastify"
+import { useContext, useState } from "react"
+
 import { CarContext } from "../../providers/CarProvider"
 import * as S from "./styles"
 
-const AdminOptions = ({ handleDelete }) => {
-	const { carsData, setCarsData } = useContext(CarContext)
+const AdminOptions = ({ handleDelete, handleUpdate }) => {
 	const [isLoading, setIsLoading] = useState(false)
+	const { carsData, setCarsData } = useContext(CarContext)
 
 	return (
 		<S.Options disabled={isLoading}>
-			<S.StyledEdit />
+			<S.StyledEdit onClick={() => handleUpdate()} />
 			<S.StyledDelete
 				onClick={() => {
 					setIsLoading(true)

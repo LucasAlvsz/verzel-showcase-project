@@ -1,5 +1,6 @@
-import { useContext, useEffect, useState } from "react"
 import { toast } from "react-toastify"
+import { useLocation, useNavigate } from "react-router-dom"
+import { useContext, useEffect, useState } from "react"
 
 import { useForm } from "../../hooks"
 import { CarContext } from "../../providers/CarProvider"
@@ -10,14 +11,18 @@ import Card from "../../components/Card"
 import * as S from "./styles"
 
 const Register = () => {
-	const [form, handleForm, resetForm] = useForm()
-	const { getBrands, createCar, carsData, setCarsData } = useContext(CarContext)
+	const location = useLocation()
+	const navigate = useNavigate()
 	const [brands, setBrands] = useState([])
+	const [isUpdateCar, setIsUpdateCar] = useState(false)
 	const [brandName, setBrandName] = useState("")
+	const [form, handleForm, resetForm] = useForm()
 	const [isLoading, setIsLoading] = useState(false)
+	const { getBrands, createCar, updateCar, carsData, setCarsData } = useContext(CarContext)
 
 	useEffect(() => {
 		setIsLoading(true)
+		if (location.state?.method === "updateCar") handleUpdateCar()
 		getBrands()
 			.then(({ data }) => setBrands(data))
 			.catch(err => {
@@ -27,24 +32,64 @@ const Register = () => {
 			.finally(() => setIsLoading(false))
 	}, [])
 
+	const handleUpdateCar = () => {
+		setIsUpdateCar(true)
+		const { id: carId } = location.state
+		const carData = carsData.find(car => car.id === carId)
+		if (!carData) {
+			toast.error("Não foi possível carregar os dados do carro, tente novamente mais tarde.")
+			navigate("/")
+		}
+		const { name, brand, model, value, mainImageURL } = carData
+		form.name = name
+		form.model = model
+		form.value = value
+		form.mainImageURL = mainImageURL
+		form.brandId = brand.id
+		setBrandName(brand.name)
+	}
+
 	const handleSubmit = async e => {
 		e.preventDefault()
 		setIsLoading(true)
-		createCar(form)
-			.then(({ data }) => {
-				toast.success("Carro cadastrado com sucesso!")
-				resetForm()
-				setBrandName("")
-				const brandObj = brands.find(brand => brand.id === data.brandId)
-				setCarsData([...carsData, { ...data, brand: { brandObj } }])
-			})
-			.catch(err => {
-				console.log(err)
-				toast.error(
-					"Não foi possível cadastrar o carro, verifique os dados e tente novamente."
-				)
-			})
-			.finally(() => setIsLoading(false))
+		if (isUpdateCar) {
+			const { id: carId } = location.state
+			updateCar(carId, form)
+				.then(({ data }) => {
+					toast.success("Carro atualizado com sucesso")
+					const brandObj = brands.find(brand => brand.id === data.brandId)
+					setCarsData(
+						carsData.map(car =>
+							car.id === data.id ? { ...data, brand: brandObj } : car
+						)
+					)
+					setIsUpdateCar(false)
+					resetForm()
+					setBrandName("")
+					navigate("/")
+				})
+				.catch(err => {
+					console.log(err)
+					toast.error("Erro ao atualizar carro, tente novamente mais tarde")
+				})
+				.finally(() => setIsLoading(false))
+		} else {
+			createCar(form)
+				.then(({ data }) => {
+					toast.success("Carro cadastrado com sucesso!")
+					resetForm()
+					setBrandName("")
+					const brandObj = brands.find(brand => brand.id === data.brandId)
+					setCarsData([...carsData, { ...data, brand: { brandObj } }])
+				})
+				.catch(err => {
+					console.log(err)
+					toast.error(
+						"Não foi possível cadastrar o carro, verifique os dados e tente novamente."
+					)
+				})
+				.finally(() => setIsLoading(false))
+		}
 	}
 
 	return (
@@ -110,7 +155,7 @@ const Register = () => {
 							name="brandId"
 							required
 							disabled={isLoading}
-							value={brandName || ""}
+							value={form.brandId || ""}
 							onChange={e => {
 								setBrandName(brands.find(brand => brand.id == e.target.value).name)
 								handleForm(e)
@@ -126,7 +171,7 @@ const Register = () => {
 						</select>
 
 						<button type="submit" disabled={isLoading}>
-							{isLoading ? <Loading /> : "Cadastrar"}
+							{isLoading ? <Loading /> : isUpdateCar ? "Editar" : "Cadastrar"}
 						</button>
 						<button
 							type="button"
