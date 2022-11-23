@@ -1,12 +1,12 @@
 import { toast } from "react-toastify"
-import { useLocation, useNavigate } from "react-router-dom"
 import { useContext, useEffect, useState } from "react"
+import { useLocation, useNavigate } from "react-router-dom"
 
 import { useForm } from "../../hooks"
 import { CarContext } from "../../providers/CarProvider"
 
-import Loading from "../../components/Loading"
 import Card from "../../components/Card"
+import Loading from "../../components/Loading"
 
 import * as S from "./styles"
 

@@ -1,8 +1,8 @@
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom"
 
 import Home from "../pages/Home"
-import SignIn from "../pages/Auth/SignIn"
 import Register from "../pages/Register"
+import SignIn from "../pages/Auth/SignIn"
 import PrivateRoutes from "./PrivateRoutes"
 
 const Router = () => {

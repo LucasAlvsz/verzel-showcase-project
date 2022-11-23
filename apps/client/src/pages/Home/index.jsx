@@ -43,7 +43,7 @@ const Home = () => {
 				<S.FilterContainer>
 					<h4>CARROS USADOS</h4>
 					<span>
-						<p>3.718 Resultados</p>
+						<p>{carsData?.length} Resultados</p>
 						<S.OrderBy>
 							Odernar:
 							<select
