@@ -6,8 +6,10 @@
 		"apps/*"
 	],
 	"scripts": {
+		"heroku-postbuild": "turbo run build --filter=api",
 		"build": "turbo run build",
 		"dev": "turbo run dev --parallel",
+		"start": "turbo run start",
 		"format": "prettier --write \"**/*.{ts,tsx,md,js,jsx}\""
 	},
 	"devDependencies": {
