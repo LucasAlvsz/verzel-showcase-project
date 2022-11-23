@@ -9,22 +9,22 @@ const getCars = async () => {
 }
 
 const createCar = async (car: CarBody) => {
-	await validadeId(car.brandId, "Brand")
+	await validateId(car.brandId, "Brand")
 	return await carRepostitory.createCar(car)
 }
 
 const updateCar = async (id: number, car: CarData) => {
-	await validadeId(id, "Car")
-	await validadeId(car.brandId, "Brand")
+	await validateId(id, "Car")
+	await validateId(car.brandId, "Brand")
 	return await carRepostitory.updateCar(id, { ...car, brandId: car.brandId })
 }
 
 const deleteCar = async (id: number) => {
-	await validadeId(id, "Car")
+	await validateId(id, "Car")
 	return await carRepostitory.deleteCar(id)
 }
 
-const validadeId = async (id: number, model: Prisma.ModelName) => {
+const validateId = async (id: number, model: Prisma.ModelName) => {
 	const car = await queryFactory.getById(id, "Car")
 	if (!car) throw new NotFoundError(`${model} not found`)
 }
