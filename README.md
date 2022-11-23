@@ -44,8 +44,19 @@ Verzel Project simulates a car showcase, where the user can see the cars and adm
 #### Sign-in
 
 ```http
-  POST /auth/signin
+  POST /admin/signin
 ```
+
+#### Request:
+
+| Body       | Type     | Description              |
+| :--------- | :------- | :----------------------- |
+| `email`    | `string` | **Required** valid email |
+| `password` | `string` | **Required**.            |
+
+> You can use the following credentials to login:
+> email: admin@admin.com
+> password: adminadmin
 
 #### Response:
 
@@ -57,17 +68,10 @@ Verzel Project simulates a car showcase, where the user can see the cars and adm
 
 #
 
-#### Request:
-
-| Body       | Type     | Description              |
-| :--------- | :------- | :----------------------- |
-| `email`    | `string` | **Required** valid email |
-| `password` | `string` | **Required**.            |
-
 #### Get all cars
 
 ```http
-  GET /api/cars
+  GET /cars
 ```
 
 #### Response:
@@ -116,7 +120,7 @@ Verzel Project simulates a car showcase, where the user can see the cars and adm
 #### Create a car
 
 ```http
-POST /car
+POST /cars
 ```
 
 #### Request:
@@ -146,25 +150,69 @@ POST /car
 
 #
 
-#### Get a card
+#### Update a car
 
 ```http
-GET /card/:cardId
+PUT /cars/:id
 ```
 
 #### Request:
 
-| Parameter | Type     | Description   |
-| :-------- | :------- | :------------ |
-| `cardId`  | `string` | **Required**. |
+| Body           | Type     | Description                   |
+| :------------- | :------- | :---------------------------- |
+| `name`         | `string` | **Required**.                 |
+| `model`        | `string` | **Required**.                 |
+| `mainImageURL` | `string` | **Required**. valid image url |
+| `value`        | `number` | **Required**.                 |
+| `brandId`      | `number` | **Required** valid brand id.  |
+
+#### Params:
+
+| Params | Type     | Description            |
+| :----- | :------- | :--------------------- |
+| `id`   | `number` | **Required**. valid id |
 
 #### Response:
 
 ```json
 {
-	"name": "Lucas Alves",
-	"linkedinUrl": "https://www.linkedin.com/in/LucasAlvsz/",
-	"githubUrl": "https://www.github.com/LucasAlvsz/"
+	"id": 1,
+	"name": "Fiat Uno editado",
+	"model": "2021",
+	"mainImageURL": "https://carros2023.com.br/wp-content/uploads/2022/08/1-1.png",
+	"value": "20000",
+	"createdAt": "2022-11-22T23:48:24.560Z",
+	"updatedAt": "2022-11-22T23:48:24.560Z",
+	"brandId": 1
+}
+```
+
+#
+
+#### Delete a car
+
+```http
+DELETE /cars/:id
+```
+
+#### Params:
+
+| Params | Type     | Description            |
+| :----- | :------- | :--------------------- |
+| `id`   | `number` | **Required**. valid id |
+
+#### Response:
+
+```json
+{
+	"id": 1,
+	"name": "Fiat Uno",
+	"model": "2021",
+	"mainImageURL": "https://carros2023.com.br/wp-content/uploads/2022/08/1-1.png",
+	"value": "20000",
+	"createdAt": "2022-11-22T23:48:24.560Z",
+	"updatedAt": "2022-11-22T23:48:24.560Z",
+	"brandId": 1
 }
 ```
 
@@ -186,27 +234,23 @@ To run this project, you will need to add the following environment variables to
 
 `VITE_API_URL = http://localhost:[PORT] or http://localhost:5000`
 
-`VITE_BASE_URL = http://localhost:[PORT] or http://localhost:5000`
-
 #
 
 ##### With Docker:
 
 ##### back-end:
 
-`DATABASE_URL = postgres://username:password@postgres_db:5432/databasename`
+`DATABASE_URL = postgres://postgres:postgres@postgres-db:5432/vercel-project`
 
 `POSTGRES_USER = postgres`
 
 `POSTGRES_PASSWORD = postgres`
 
-`POSTGRES_DB = virtual-card`
+`POSTGRES_DB = vercel-project`
 
 ##### front-end:
 
 `VITE_API_URL = http://localhost:8080/api`
-
-`VITE_BASE_URL = http://localhost:8080`
 
 </br>
 
@@ -219,55 +263,19 @@ To run this project, you will need to add the following environment variables to
 Clone the project
 
 ```bash
-  git clone https://github.com/LucasAlvsz/virtual-card.git
+  git clone git@github.com:LucasAlvsz/verzel-showcase-project.git
 ```
 
 Go to the project api directory
 
 ```bash
-  cd virtual-card/virtual-card-back
+  cd verzel-showcase-project/
 ```
 
-Install dependencies
-
-```bash
-  npm install
-```
-
-Build the project
-
-```bash
-  npm run build
-```
-
-Start the server
+Run the app
 
 ```bash
   npm run start
-```
-
-Go to the project client directory
-
-```bash
-  cd virtual-card/virtual-card-front
-```
-
-Install dependencies
-
-```bash
-  npm install
-```
-
-Build the project
-
-```bash
-  npm run build
-```
-
-Start the client
-
-```bash
-  npm run preview
 ```
 
 #
@@ -275,7 +283,7 @@ Start the client
 ##### With Docker:
 
 ```bash
-  cd virtual-card
+  cd verzel-showcase-project/
 ```
 
 ```bash
