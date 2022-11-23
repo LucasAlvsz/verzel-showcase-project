@@ -13,7 +13,7 @@ import * as S from "./styles"
 
 const SignIn = () => {
 	const navigate = useNavigate()
-	const [form, handleForm] = useForm()
+	const [form, setForm, handleForm] = useForm()
 	const { setToken } = useContext(AuthContext)
 	const [isLoading, setIsLoading] = useState(false)
 	const [error, setError] = useState(null)

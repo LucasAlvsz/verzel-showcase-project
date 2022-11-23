@@ -45,7 +45,7 @@ const Register = () => {
 			model,
 			value,
 			mainImageURL,
-			brand: { id: brandId },
+			brand: { id: brandId, name: brandName },
 		} = carData
 
 		setForm({
@@ -57,7 +57,7 @@ const Register = () => {
 			brandId,
 		})
 
-		setBrandName(brand.name)
+		setBrandName(brandName)
 	}
 
 	const handleSubmit = async e => {
@@ -155,6 +155,7 @@ const Register = () => {
 							type="number"
 							name="value"
 							step="any"
+							min="1"
 							required
 							placeholder="Preço do carro"
 							disabled={isLoading}
