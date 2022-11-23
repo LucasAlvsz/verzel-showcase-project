@@ -16,7 +16,7 @@ const Register = () => {
 	const [brands, setBrands] = useState([])
 	const [isUpdateCar, setIsUpdateCar] = useState(false)
 	const [brandName, setBrandName] = useState("")
-	const [form, handleForm, resetForm] = useForm()
+	const [form, setForm, handleForm, resetForm] = useForm()
 	const [isLoading, setIsLoading] = useState(false)
 	const { getBrands, createCar, updateCar, carsData, setCarsData } = useContext(CarContext)
 
@@ -40,12 +40,23 @@ const Register = () => {
 			toast.error("Não foi possível carregar os dados do carro, tente novamente mais tarde.")
 			navigate("/")
 		}
-		const { name, brand, model, value, mainImageURL } = carData
-		form.name = name
-		form.model = model
-		form.value = value
-		form.mainImageURL = mainImageURL
-		form.brandId = brand.id
+		const {
+			name,
+			model,
+			value,
+			mainImageURL,
+			brand: { id: brandId },
+		} = carData
+
+		setForm({
+			...form,
+			name,
+			model,
+			value,
+			mainImageURL,
+			brandId,
+		})
+
 		setBrandName(brand.name)
 	}
 
@@ -63,9 +74,9 @@ const Register = () => {
 							car.id === data.id ? { ...data, brand: brandObj } : car
 						)
 					)
-					setIsUpdateCar(false)
 					resetForm()
 					setBrandName("")
+					setIsUpdateCar(false)
 					navigate("/")
 				})
 				.catch(err => {

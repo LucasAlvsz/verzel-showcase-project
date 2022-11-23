@@ -5,7 +5,7 @@ const useForm = (initState = {}) => {
 	const handleForm = ({ target: { value, name } }) => setForm({ ...form, [name]: value })
 	const resetForm = () => setForm(initState)
 
-	return [form, handleForm, resetForm]
+	return [form, setForm, handleForm, resetForm]
 }
 
 export default useForm
