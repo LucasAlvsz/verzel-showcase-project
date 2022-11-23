@@ -1,4 +1,5 @@
 import styled from "styled-components"
+import { Logout } from "@styled-icons/heroicons-outline/Logout"
 import { PlusCircle } from "@styled-icons/evaicons-solid/PlusCircle"
 import { AdminPanelSettings } from "@styled-icons/material/AdminPanelSettings"
 
@@ -12,11 +13,6 @@ export const StyledHeader = styled.header`
 	align-items: center;
 	padding: 16px 20px;
 	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-	h3 {
-		font-size: 14px;
-		font-weight: 400;
-		color: #333;
-	}
 `
 
 export const Logo = styled.img`
@@ -38,6 +34,21 @@ export const StyledAdminPanelSettings = styled(AdminPanelSettings)`
 	margin-left: 5px;
 `
 
+export const StyledLogout = styled(Logout)`
+	width: 20px;
+	height: 20px;
+	color: ${({ theme }) => theme.colors.primaryBlue};
+	margin-left: 5px;
+	cursor: pointer;
+	&:hover {
+	}
+`
+
+export const Options = styled.div`
+	display: flex;
+	gap: 25px;
+`
+
 export const Option = styled.div`
 	display: flex;
 	justify-content: space-between;
@@ -47,5 +58,17 @@ export const Option = styled.div`
 		text-decoration: underline;
 		transition: 0.3s;
 		transform: scale(1.1);
+		> p,
+		h3 {
+			color: ${({ theme }) => theme.colors.primaryBlue};
+		}
+	}
+	> h3 {
+		font-size: 14px;
+		font-weight: 400;
+		color: #333;
+	}
+	> p {
+		font-size: 14px;
 	}
 `
