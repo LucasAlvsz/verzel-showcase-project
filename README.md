@@ -118,7 +118,7 @@ GET /cars
 
 `Authorization format: Bearer jsonwebtoken`
 
-==All following routes request an authorization header==
+**All following routes request an authorization header**
 
 <br/>
 
