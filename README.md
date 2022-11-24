@@ -1,7 +1,7 @@
 <h1 align="center">
   Verzel Project
   </br>
-    <a href="verzel-showcase-project-client.vercel.app" target="_blank">
+    <a href="https://verzel-showcase-project-client.vercel.app/" target="_blank">
       <img src="https://img.shields.io/badge/Version-1.0.0-blue.svg" alt="Version">
     </a>
 </h1>
