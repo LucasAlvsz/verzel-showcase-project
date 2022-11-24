@@ -2,7 +2,7 @@
   Verzel Project
   </br>
     <a href="https://verzel-showcase-project-client.vercel.app/" target="_blank">
-      <img src="https://img.shields.io/badge/Version-1.0.0-blue.svg" alt="Version">
+      ><img src="https://img.shields.io/badge/Version-1.0.0-blue.svg" alt="Version"><
     </a>
 </h1>
 <div align="center">
