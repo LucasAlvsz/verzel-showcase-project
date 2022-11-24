@@ -44,7 +44,7 @@ Verzel Project simulates a car showcase, where the user can see the cars and adm
 #### Sign-in
 
 ```http
-  POST /admin/signin
+POST /admin/sign-in
 ```
 
 #### Request:
@@ -55,8 +55,13 @@ Verzel Project simulates a car showcase, where the user can see the cars and adm
 | `password` | `string` | **Required**.            |
 
 > You can use the following credentials to login:
-> email: admin@admin.com
-> password: adminadmin
+
+```json
+{
+	"email": "admin@admin.com",
+	"password": "adminadmin"
+}
+```
 
 #### Response:
 
@@ -71,7 +76,7 @@ Verzel Project simulates a car showcase, where the user can see the cars and adm
 #### Get all cars
 
 ```http
-  GET /cars
+GET /cars
 ```
 
 #### Response:
@@ -113,7 +118,7 @@ Verzel Project simulates a car showcase, where the user can see the cars and adm
 
 `Authorization format: Bearer jsonwebtoken`
 
-**All following routes request authorization header**
+==All following routes request an authorization header==
 
 <br/>
 
@@ -256,7 +261,7 @@ To run this project, you will need to add the following environment variables to
 
 ## Run Locally
 
-> Remember to create a .env file with the environment variables in virtual-card-front and virtual-card-back folders.
+> Remember to create a .env file with the environment variables in verzel-showcase-project/apps/api and verzel-showcase-project/apps/client folders.
 
 ##### Without Docker:
 
@@ -266,10 +271,16 @@ Clone the project
   git clone git@github.com:LucasAlvsz/verzel-showcase-project.git
 ```
 
-Go to the project api directory
+Go to the project directory
 
 ```bash
   cd verzel-showcase-project/
+```
+
+Install the dependencies
+
+```bash
+  npm install
 ```
 
 Run the app
@@ -278,17 +289,31 @@ Run the app
   npm run start
 ```
 
+> The app will be running on http://localhost:4173/ by default.
+
 #
 
 ##### With Docker:
+
+Clone the project
+
+```bash
+  git clone git@github.com:LucasAlvsz/verzel-showcase-project.git
+```
+
+Go to the project directory
 
 ```bash
   cd verzel-showcase-project/
 ```
 
+Run the app
+
 ```bash
   docker-compose up
 ```
+
+> The app will be running on http://localhost:8080/ by default.
 
 </br>
 
