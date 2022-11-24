@@ -122,6 +122,29 @@ GET /cars
 
 <br/>
 
+#### Get all car brands
+
+```http
+GET /cars/brands
+```
+
+#### Response:
+
+```json
+[
+	{
+		"id": 1,
+		"name": "Audi"
+	},
+	{
+		"id": 2,
+		"name": "BMW"
+	}
+]
+```
+
+#
+
 #### Create a car
 
 ```http
