@@ -252,13 +252,13 @@ To run this project, you will need to add the following environment variables to
 
 ##### Without Docker:
 
-##### back-end:
+##### back-end (api):
 
 `DATABASE_URL = postgres://username:password@hostname:5432/databasename`
 
 `PORT = 5000 or any port you want [optional]`
 
-##### front-end:
+##### front-end (client):
 
 `VITE_API_URL = http://localhost:[PORT] or http://localhost:5000`
 
@@ -266,7 +266,7 @@ To run this project, you will need to add the following environment variables to
 
 ##### With Docker:
 
-##### back-end:
+##### back-end (api):
 
 `DATABASE_URL = postgres://postgres:postgres@postgres-db:5432/vercel-project`
 
@@ -276,7 +276,7 @@ To run this project, you will need to add the following environment variables to
 
 `POSTGRES_DB = vercel-project`
 
-##### front-end:
+##### front-end (client):
 
 `VITE_API_URL = http://localhost:8080/api`
 
@@ -284,7 +284,7 @@ To run this project, you will need to add the following environment variables to
 
 ## Run Locally
 
-> Remember to create a .env file with the environment variables in verzel-showcase-project/apps/api and verzel-showcase-project/apps/client folders.
+> Remember to create a .env file with the environment variables in /apps/api and /apps/client folders.
 
 ##### Without Docker:
 
